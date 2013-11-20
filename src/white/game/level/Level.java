@@ -98,6 +98,14 @@ public class Level {
 		for(Entity e : entities){
 			e.tick();
 		}
+		
+		for(Tile t : Tile.tiles){
+			if(t==null){
+				break;
+				}
+			t.tick();
+		}
+		
 	}
 	
 	public void RenderTiles(Screen screen, int xOffset, int yOffset){
