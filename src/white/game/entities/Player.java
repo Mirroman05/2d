@@ -82,7 +82,13 @@ public class Player extends Mob{
 			screen.render(xOffset+8, yOffset+3, 0+27*32, waterColour, 0x01, 1);
 		}
 		
-		
+		if(isSwimming && movingDir ==0){
+			xTile =3;
+			yTile =27;
+		}else if (isSwimming && movingDir ==1){
+			xTile =1;
+			yTile =27;
+		}
 		screen.render(xOffset +(modifier*flipTop), yOffset, xTile+yTile*32,colour, flipTop, scale);
 		screen.render(xOffset + modifier -(modifier*flipTop), yOffset, (xTile+1)+yTile*32, colour, flipTop,scale);
 		
