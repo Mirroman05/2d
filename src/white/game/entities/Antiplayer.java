@@ -6,6 +6,7 @@ import white.game.InputHandler;
 import white.game.gfx.Colours;
 import white.game.gfx.Screen;
 import white.game.level.Level;
+import white.game.movement.movement;
 
 public class Antiplayer extends Mob{
 	
@@ -14,34 +15,37 @@ public class Antiplayer extends Mob{
 	private boolean isSwimming = false;
 	private int tickCount =0;
 	int r, colour,lastMove;
+	int move = 0;
 	Random generator = new Random();
+	movement pattern = new movement();
 	
 	
 	public Antiplayer(Level level,  int x, int y, int colour) {
 		super(level, "antiPlayer", x, y, 1);
 		this. colour = colour;
+		pattern.createSquare();
 	}
 
 	public void tick() {
 		int xa = 0;
 		int ya = 0;
 		
-		if(tickCount%50 <10){
-		 r = generator.nextInt(4);
+		if(tickCount%50 <1){
+			r = pattern.Move();
 		}
-		 if(r ==0&& lastMove != 1){
+		 if(r ==0){
 			 ya-=1;
 			 lastMove = ya;
 			 }	 
-		 else if(r ==1 &&lastMove != -1){
+		 else if(r ==1){
 	    	 ya+=1;
 	    	 lastMove = ya;
 	    	 }
-		 else if(r ==2&&lastMove != 1){
+		 else if(r ==2){
 	    	 xa-=1;
 	    	 lastMove = xa;
 	    	 }
-		 else if(r ==3&&lastMove != -1){
+		 else if(r ==3){
 	    	 xa+=1;
 	    	 lastMove = xa;
 	    	 }

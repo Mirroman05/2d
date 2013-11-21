@@ -11,6 +11,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import white.game.entities.Antiplayer;
 import white.game.entities.Player;
 import white.game.gfx.Colours;
 import white.game.gfx.Font;
@@ -41,7 +42,7 @@ public class Game extends Canvas implements Runnable{
     public InputHandler input;
     public Level level;
     public Player player;
-    
+    public Antiplayer villian;
     
     public Game(){
         setMinimumSize(new Dimension(WIDTH* SCALE, HEIGHT * SCALE));
@@ -79,7 +80,9 @@ public class Game extends Canvas implements Runnable{
     	input = new InputHandler(this);
     	level = new Level("/levels/newTest.png");
     	player = new Player(level, 0,0,input);
+    	villian = new Antiplayer(level,10,10,Colours.get(-1, 000, 500, 555));
     	level.addEntity(player);
+    	level.addEntity(villian);
     	
     	
     }
@@ -128,7 +131,7 @@ public class Game extends Canvas implements Runnable{
             }
             if(System.currentTimeMillis()-lastTimer >= 1000){
                 lastTimer+=1000;
-                System.out.println(ticks+","+frames);
+               // System.out.println(ticks+","+frames);
                 frames =0;
                 ticks=0;
             }
