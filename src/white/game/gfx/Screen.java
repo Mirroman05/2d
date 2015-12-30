@@ -18,13 +18,6 @@ public class Screen {
 
 	public SpriteSheet sheet;
 
-	public Screen(int width, int height, SpriteSheet sheet) {
-		this.width = width;
-		this.height = height;
-		this.sheet = sheet;
-
-		pixels = new int[width * height];
-	}
 
 	
 	public void render(int xPos, int yPos, int tile, int colour,int mirrorDir, int scale) {
